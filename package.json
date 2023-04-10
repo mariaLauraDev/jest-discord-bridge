@@ -1,0 +1,37 @@
+{
+  "name": "jest-discord-bridge",
+  "version": "1.0.0",
+  "author": {
+    "name": "Maria Laura",
+    "email": "marialauradev@gmail.com",
+    "url": "https://github.com/mariaLauraDev"
+  },
+  "description": "A dependency that sends test reports from Jest as messages on a Discord channel using webhooks.",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariaLauraDev/jest-discord-bridge.git"
+  },
+  "keywords": [
+    "jest",
+    "reporter",
+    "test",
+    "discord",
+    "automation",
+    "end-to-end",
+    "reporting"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariaLauraDev/jest-discord-bridge/issues"
+  },
+  "homepage": "https://github.com/mariaLauraDev/jest-discord-bridge#readme",
+  "files": [
+    "src",
+    "yarn.lock"
+  ],
+  "dependencies": {
+    "discord-webhook-node": "^1.1.8",
+    "strip-ansi": "^7.0.1"
+  }
+}
