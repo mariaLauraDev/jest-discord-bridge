@@ -36,5 +36,3 @@ module.exports = {
 ## Result
 
 ![Result image](./src/result.png)
-
-![Visitor Count](https://visitor-badge.glitch.me/badge?page_id=jest-discord-bridge)

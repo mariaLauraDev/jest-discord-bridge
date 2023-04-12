@@ -9,7 +9,7 @@ class DiscordReporter {
         this._reportIfSuccess = reporterOptions.reportIfSuccess || false;
         
         if (!reporterOptions.webhook) {
-            throw new Error('\nPlease set a discord webhook for jest-discord-reporter in jest.config.js');
+            throw new Error('\nPlease set a discord webhook for jest-discord-bridge in jest.config.js');
         }
         
         this._discordOptions = {
@@ -22,7 +22,6 @@ class DiscordReporter {
         this.webhook.setUsername(this._discordOptions.userName);
         this.webhook.setAvatar(this._discordOptions.avatar);
     }
-
 
     onRunComplete(test, runResults) {
         let date = new Date();
@@ -37,12 +36,19 @@ class DiscordReporter {
             return acc;
         }, []);
 
-        // send messages by Discord webhook according to the test results and test date and time
-        if (failureMessages.length) {
-            this.webhook.send(`**SITE ALERT**: Test date and time: ${testDateTime}\n ${failureMessages.join('\n')}`);
-        } else if (this._reportIfSuccess) {
-            this.webhook.send(`**SITE STATUS**: Test date and time: ${testDateTime}\n All tests passed!`);
-        }
+        try {
+            if (failureMessages.length) {
+                if(failureMessages.join('\n').length <= 2000) {
+                    this.webhook.send(`**SITE ALERT**: Test date and time: ${testDateTime}\n ${failureMessages.join('\n')}`);
+                } else {
+                    this.webhook.send(`**SITE ALERT**: Test date and time: ${testDateTime}\nTotal tests failed: ${runResults.testResults[0].numFailingTests}\nThe error message is too big to send via discord`);
+                }
+            } else if (this._reportIfSuccess) {
+                this.webhook.send(`**SITE STATUS**: Test date and time: ${testDateTime}\n All tests passed!`);
+            }
+        } catch (error) {
+            this.webhook.send(`**SITE ALERT**: Test date and time: ${testDateTime}\nAn unknown error occurs`);
+        } 
     }
 }
 
