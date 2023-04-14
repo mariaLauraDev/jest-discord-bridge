@@ -1,6 +1,11 @@
 <div align="center">
   <img height="200"
     src="./src/logo.png">
+    <p align="center"> 
+      <img src="https://img.shields.io/npm/v/jest-discord-bridge?style=flat-square">
+      <img src="https://img.shields.io/npm/dm/jest-discord-bridge?style=flat-square">
+      <img src="https://img.shields.io/travis/com/hargne/jest-discord-bridge?style=flat-square">
+    </p>
   <p>A virtual bridge to see your Jest test error reports on your Discord server!</p>
 </div>
 
